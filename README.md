@@ -124,13 +124,7 @@ EventCode=4625
 ![image alt](https://github.com/Nithin07v/home-soc-lab/blob/dd81f7bc89cad5364b707774b1ddb6ca370a9084/Screenshot%202026-07-07%20222238.png)
 
 
-Suggested screenshots:
 
-- VMware Virtual Machines
-- Splunk Search Interface
-- Sysmon Process Creation Events
-- Windows Event Logs
-- Universal Forwarder Configuration
 
 ---
 

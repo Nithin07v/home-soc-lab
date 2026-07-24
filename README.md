@@ -1,91 +1,104 @@
 # 🛡️ Splunk SOC Home Lab
 
-## 📌 Overview
+> A hands-on Security Operations Center (SOC) Home Lab built to simulate real-world security monitoring using Splunk Enterprise, Sysmon, Windows 11, Ubuntu Server, and Kali Linux.
 
-This project demonstrates the creation of a Security Operations Center (SOC) Home Lab using Splunk Enterprise, Sysmon, Windows 11, Ubuntu Server, and Kali Linux.
+---
 
-The objective of this lab is to simulate a real SOC environment where security events are collected, forwarded, indexed, and analyzed using Splunk.
+## 📖 Project Overview
+
+This project documents my journey of building a SOC Home Lab from scratch to gain practical experience in Security Information and Event Management (SIEM), Windows logging, and threat detection.
+
+The lab is designed to simulate a real SOC environment where Windows security events are collected, forwarded, indexed, and analyzed using Splunk Enterprise.
+
+Rather than only studying cybersecurity concepts, this project focuses on implementing and troubleshooting real technologies commonly used by security analysts.
 
 ---
 
 # 🏗️ Lab Architecture
 
-```
-                    Kali Linux
-                  (Attacker VM)
+```text
+                     Kali Linux
+                 (Attack Simulation)
                          │
-                         │ Attack Simulation
                          ▼
-                Windows 11 VM
-         ┌──────────────────────────┐
-         │ • Windows Event Logs     │
-         │ • Sysmon                 │
-         │ • Universal Forwarder    │
-         └──────────────┬───────────┘
-                        │
-                        │ Port 9997
-                        ▼
-               Ubuntu 24.04 LTS
-             Splunk Enterprise Server
-                        │
-                        ▼
-                 Search & Monitoring
+                  Windows 11 VM
+          ┌────────────────────────┐
+          │ • Windows Event Logs   │
+          │ • Sysmon               │
+          │ • Splunk Forwarder     │
+          └──────────┬─────────────┘
+                     │
+             TCP Port 9997
+                     │
+                     ▼
+             Ubuntu 24.04 LTS
+          Splunk Enterprise Server
+                     │
+                     ▼
+          Search • Monitoring • Analysis
 ```
 
 ---
 
-# 🎯 Project Objectives
+# 🎯 Objectives
+
+This project aims to:
 
 - Build a functional SOC Home Lab
-- Configure centralized log collection
-- Forward Windows Event Logs to Splunk
+- Deploy Splunk Enterprise on Ubuntu
+- Configure centralized Windows log collection
 - Install and configure Sysmon
-- Collect security telemetry
-- Learn basic Splunk Search Processing Language (SPL)
-- Prepare the lab for attack simulation and threat hunting
+- Forward Windows Event Logs using Splunk Universal Forwarder
+- Learn Splunk Search Processing Language (SPL)
+- Create a foundation for threat hunting and detection engineering
 
 ---
 
-# 🖥️ Technologies Used
+# 🖥️ Environment
 
-- Splunk Enterprise
-- Splunk Universal Forwarder
-- Sysmon
-- Ubuntu 24.04 LTS
-- Windows 11
-- Kali Linux
-- VMware Workstation
-
----
-
-# ⚙️ Configuration Completed
-
-- Ubuntu Splunk Enterprise installation
-- Receiving port (9997) enabled
-- Windows Universal Forwarder installation
-- Windows Event Log forwarding
-- Sysmon installation
-- Sysmon log forwarding
-- Windows Event Viewer integration
-- Log verification in Splunk
+| Component | Technology |
+|-----------|------------|
+| Hypervisor | VMware Workstation |
+| SIEM | Splunk Enterprise |
+| Log Forwarder | Splunk Universal Forwarder |
+| Monitoring | Sysmon |
+| Server | Ubuntu 24.04 LTS |
+| Endpoint | Windows 11 |
+| Attacker Machine | Kali Linux |
 
 ---
 
-# 📊 Sample SPL Searches
+# ✅ Completed
 
-### Show all events
+- Installed Ubuntu 24.04
+- Installed Splunk Enterprise
+- Configured Splunk receiving port (9997)
+- Installed Windows 11
+- Installed Splunk Universal Forwarder
+- Configured Windows Event Log forwarding
+- Installed Sysmon
+- Configured Sysmon logging
+- Verified Windows logs in Splunk
+- Verified Sysmon events in Splunk
+- Troubleshot forwarding and Windows service permission issues
+
+---
+
+# 📊 Sample SPL Queries
+
+### Show all indexed events
 
 ```spl
 index=*
 ```
 
-### View Windows Security Logs
+### Windows Security Events
 
 ```spl
 source="WinEventLog:Security"
 ```
 
-### View Sysmon Events
+### Sysmon Events
 
 ```spl
 source="WinEventLog:Microsoft-Windows-Sysmon/Operational"
@@ -97,7 +110,7 @@ source="WinEventLog:Microsoft-Windows-Sysmon/Operational"
 EventCode=1
 ```
 
-### Failed Logins
+### Failed Login Attempts
 
 ```spl
 EventCode=4625
@@ -107,65 +120,91 @@ EventCode=4625
 
 # 📷 Screenshots
 
-(Add screenshots here)
+> Screenshots will be added as the project progresses.
 
-Examples:
+Suggested screenshots:
 
-- Splunk Dashboard
-- Sysmon Event Logs
 - VMware Virtual Machines
-- Windows Forwarder Configuration
-- Successful Sysmon Search
+- Splunk Search Interface
+- Sysmon Process Creation Events
+- Windows Event Logs
+- Universal Forwarder Configuration
 
 ---
 
-# 🧠 Skills Demonstrated
+# 🛠️ Challenges & Troubleshooting
+
+During this project I encountered several real-world issues, including:
+
+- Network connectivity between virtual machines
+- Splunk Universal Forwarder configuration
+- Windows Event Log forwarding
+- Sysmon permission issues (`errorCode=5`)
+- Service account configuration
+- Verifying log ingestion using Splunk searches
+
+Resolving these issues provided valuable hands-on troubleshooting experience.
+
+---
+
+# 📚 Skills Gained
 
 - SIEM Deployment
 - Splunk Administration
 - Windows Event Logging
 - Sysmon Configuration
 - Log Collection
-- Security Monitoring
-- Troubleshooting
+- Event Analysis
 - Linux Administration
-- Basic SPL Queries
+- VMware Networking
+- Basic SPL
+- Troubleshooting
 
 ---
 
-# 🚀 Future Improvements
+# 🚀 Future Roadmap
 
-- Attack simulation using Kali Linux
-- Nmap detection
+The lab will continue to expand with additional security monitoring capabilities, including:
+
+- Network scanning detection (Nmap)
 - PowerShell detection
+- Network connection monitoring
 - Threat hunting
+- Custom SPL detections
 - Dashboards
 - Alerts
 - Detection engineering
+- Simulated attack investigations
 - Incident response scenarios
 
 ---
 
-# 📚 Learning Outcomes
+# 📈 Current Progress
 
-During this project I learned how to:
-
-- Configure Splunk Enterprise
-- Deploy Universal Forwarder
-- Install and configure Sysmon
-- Collect and analyze Windows Event Logs
-- Troubleshoot log forwarding issues
-- Search security events using SPL
-- Build a basic SOC monitoring environment
+| Phase | Status |
+|--------|--------|
+| Infrastructure Setup | ✅ Complete |
+| Log Collection | ✅ Complete |
+| Sysmon Integration | ✅ Complete |
+| SPL Learning | 🟡 In Progress |
+| Attack Simulation | ⏳ Planned |
+| Threat Hunting | ⏳ Planned |
+| Detection Engineering | ⏳ Planned |
+| Dashboards & Alerts | ⏳ Planned |
 
 ---
 
-## 👨‍💻 Author
+# 💡 Key Takeaways
 
-**Nithin Vivek**
+Building this lab has strengthened my understanding of:
 
-Aspiring Cybersecurity & SOC Analyst
+- How Windows logs are generated
+- How Sysmon enhances endpoint visibility
+- How logs are forwarded to a SIEM
+- Basic security event investigation
+- Practical troubleshooting in a SOC environment
 
-LinkedIn: *(Add your profile)*
+This project is continuously updated as I learn and implement new security concepts.
 
-GitHub: *(Add your profile)*
+---
+

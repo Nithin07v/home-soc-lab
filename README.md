@@ -121,6 +121,7 @@ EventCode=4625
 # 📷 Screenshots
 
 ![image alt](https://github.com/Nithin07v/home-soc-lab/blob/c685fc82274e7e633045c9ed8f86ad1f3bfd940a/Screenshot%202026-07-07%20214507.png)
+![image alt](https://github.com/Nithin07v/home-soc-lab/blob/dd81f7bc89cad5364b707774b1ddb6ca370a9084/Screenshot%202026-07-07%20222238.png)
 
 
 Suggested screenshots:

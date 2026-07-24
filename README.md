@@ -120,7 +120,8 @@ EventCode=4625
 
 # 📷 Screenshots
 
-> Screenshots will be added as the project progresses.
+![image alt] (https://github.com/Nithin07v/home-soc-lab/blob/c685fc82274e7e633045c9ed8f86ad1f3bfd940a/Screenshot%202026-07-07%20214507.png)
+
 
 Suggested screenshots:
 
